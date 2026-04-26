@@ -16,7 +16,6 @@ public class Room {
     private String id;
     private String name;
     private String building;
-    private String floor;
     private int floor;
     private List<String> sensorIds;
     
