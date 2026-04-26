@@ -22,6 +22,7 @@ public class DataStore {
     private DataStore(){
         rooms = new ConcurrentHashMap<>();
         sensors = new ConcurrentHashMap<>();
+        addInitialData();
     }
     
     public static synchronized DataStore getInstance(){
@@ -29,6 +30,24 @@ public class DataStore {
             instance = new DataStore();
         }
         return instance;
+    }
+    
+    private void addInitialData(){
+        Room room1 = new Room();
+        room1.setId("room-001");
+        room1.setName("Computer Lab 101");
+        room1.setBuilding("Engineering Building");
+        room1.setFloor(1);
+        rooms.put(room1.getId(), room1);
+        
+        Sensor sensor1 = new Sensor();
+        sensor1.setId("sensor-001");
+        sensor1.setType("C02");
+        sensor1.setRoomId("room-001");
+        sensor1.setCurrentValue("420ppm");
+        sensors.put(sensor1.getId(), sensor1);
+        
+        room1.getSensorIds().add(sensor1.getId());
     }
     
     public Map<String, Room> getRooms() {return rooms; }
