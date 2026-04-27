@@ -36,7 +36,7 @@ public class SensorReadingResource {
         Sensor sensor = store.getSensors().get(sensorId);
         if(sensor == null) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity(Map.of("error", "Sensor nor found"))
+                    .entity(Map.of("error", "Sensor not found"))
                     .build();
         }
         return Response.ok(sensor.getReadingHistory()).build();
