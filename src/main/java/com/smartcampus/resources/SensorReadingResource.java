@@ -61,7 +61,7 @@ public class SensorReadingResource {
         
         String readingId = UUID.randomUUID().toString();
         reading.setId(readingId);
-        reading.setTimestamp(Instant.now().toString());
+        reading.setTimestamp(System.currentTimeMillis());
         reading.setSensorId(sensorId);
         
         sensor.getReadingHistory().add(reading);

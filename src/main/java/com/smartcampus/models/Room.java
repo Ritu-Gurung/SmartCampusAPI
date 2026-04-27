@@ -16,7 +16,7 @@ public class Room {
     private String id;
     private String name;
     private String building;
-    private int floor;
+    private int capacity;
     private List<String> sensorIds;
     
     public Room(){
@@ -47,12 +47,12 @@ public class Room {
          this.building = building;
      }
      
-     public int getFloor(){
-         return floor;
+     public int getCapacity(){
+         return capacity;
      }
      
-     public void setFloor(int floor){
-         this.floor = floor;
+     public void setCapacity(int floor){
+         this.capacity = floor;
      }
      
      public List<String> getSensorIds() {

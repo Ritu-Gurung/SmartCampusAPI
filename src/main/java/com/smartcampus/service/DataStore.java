@@ -37,14 +37,14 @@ public class DataStore {
         room1.setId("room-001");
         room1.setName("Computer Lab 101");
         room1.setBuilding("Engineering Building");
-        room1.setFloor(1);
+        room1.setCapacity(30);
         rooms.put(room1.getId(), room1);
         
         Sensor sensor1 = new Sensor();
         sensor1.setId("sensor-001");
         sensor1.setType("CO2");
         sensor1.setRoomId("room-001");
-        sensor1.setCurrentValue("420ppm");
+        sensor1.setCurrentValue(420.0);
         sensors.put(sensor1.getId(), sensor1);
         
         room1.getSensorIds().add(sensor1.getId());

@@ -17,7 +17,7 @@ public class Sensor {
     private String type;
     private String roomId;
     private String status;
-    private String currentValue;
+    private double currentValue;
     private List<Reading> readingHistory;
     
     public Sensor(){
@@ -56,11 +56,11 @@ public class Sensor {
         this.status = status;
     }
     
-    public String getCurrentValue(){
+    public double getCurrentValue(){
         return currentValue;
     }
     
-    public void setCurrentValue(String currentValue){
+    public void setCurrentValue(double currentValue){
         this.currentValue = currentValue;
     }
     

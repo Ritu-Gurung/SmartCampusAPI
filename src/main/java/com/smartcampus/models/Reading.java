@@ -10,8 +10,8 @@ package com.smartcampus.models;
  */
 public class Reading {
     private String id;
-    private String timestamp;
-    private String value;
+    private long timestamp;
+    private double value;
     private String sensorId;
     
     public Reading(){}
@@ -24,19 +24,19 @@ public class Reading {
         this.id=id;
     }
     
-    public String getTimestamp(){
+    public long getTimestamp(){
         return timestamp;
     }
     
-    public void setTimestamp(String timestamp){
+    public void setTimestamp(long timestamp){
         this.timestamp = timestamp;
     }
     
-    public String getValue(){
+    public double getValue(){
         return value;
     }
     
-    public void setValue(String value){
+    public void setValue(double value){
         this.value = value;
     }
     
