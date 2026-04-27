@@ -42,7 +42,7 @@ public class DataStore {
         
         Sensor sensor1 = new Sensor();
         sensor1.setId("sensor-001");
-        sensor1.setType("C02");
+        sensor1.setType("CO2");
         sensor1.setRoomId("room-001");
         sensor1.setCurrentValue("420ppm");
         sensors.put(sensor1.getId(), sensor1);
