@@ -36,7 +36,9 @@ public class RoomResource {
         String roomId = UUID.randomUUID().toString();
         room.setId(roomId);
         store.getRooms().put(roomId, room);
-        return Response.status(Response.Status.CREATED).entity(room).build();
+        return Response.status(Response.Status.CREATED)
+                .entity(room).header("Location","/api/v1/rooms" + roomId)
+                .build();
     }
     
     @GET
