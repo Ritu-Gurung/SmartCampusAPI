@@ -19,7 +19,7 @@ import jakarta.ws.rs.core.Response;
 import java.util.Map;
 import java.util.UUID;
 
-@Path("/rooms")
+@Path("/api/v1/rooms")
 @Produces(MediaType.APPLICATION_JSON)      
 @Consumes(MediaType.APPLICATION_JSON)
 public class RoomResource {
@@ -28,8 +28,16 @@ public class RoomResource {
     
     @GET
     public Response getAllRooms(){
-        return Response.ok(store.getRooms().values()).build();
-    }
+    System.out.println("=== getAllRooms CALLED ===");
+        try {
+            System.out.println("Rooms size: " + store.getRooms().size());
+            return Response.ok(store.getRooms().values()).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(500).entity(e.getMessage()).build();
+        }    
+    
+   }
     
     @POST
     public Response createRoom(Room room){
@@ -37,7 +45,7 @@ public class RoomResource {
         room.setId(roomId);
         store.getRooms().put(roomId, room);
         return Response.status(Response.Status.CREATED)
-                .entity(room).header("Location","/api/v1/rooms" + roomId)
+                .entity(room).header("Location","/api/v1/rooms/" + roomId)
                 .build();
     }
     
@@ -67,10 +75,12 @@ public class RoomResource {
         if(!room.getSensorIds().isEmpty()){
             throw new RoomNotEmptyException(
             "Room '" + roomId + "' has " + room.getSensorIds().size() +
-                    "active sensor(s). Remove all sensors before deleting this room.");
+                    " active sensor(s). Remove all sensors before deleting this room.");
         }
         
         store.getRooms().remove(roomId);
         return Response.noContent().build();
     }
+    
+    
 }

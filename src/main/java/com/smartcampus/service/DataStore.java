@@ -44,6 +44,7 @@ public class DataStore {
         sensor1.setId("sensor-001");
         sensor1.setType("CO2");
         sensor1.setRoomId("room-001");
+        sensor1.setStatus("ACTIVE");
         sensor1.setCurrentValue(420.0);
         sensors.put(sensor1.getId(), sensor1);
         

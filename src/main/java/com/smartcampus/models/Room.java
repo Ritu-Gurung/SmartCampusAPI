@@ -51,8 +51,8 @@ public class Room {
          return capacity;
      }
      
-     public void setCapacity(int floor){
-         this.capacity = floor;
+     public void setCapacity(int capacity){
+         this.capacity = capacity;
      }
      
      public List<String> getSensorIds() {

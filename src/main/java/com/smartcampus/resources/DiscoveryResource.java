@@ -35,4 +35,5 @@ public class DiscoveryResource {
         
         return Response.ok(response).build();
     }
+
 }

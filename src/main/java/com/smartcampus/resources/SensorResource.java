@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Path("/sensors")
+@Path("/api/v1/sensors")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SensorResource {
