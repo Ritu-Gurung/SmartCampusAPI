@@ -14,25 +14,25 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.HashMap;
 import java.util.Map;
 
-@Path("/")
+@Path("/api/v1")
 public class DiscoveryResource {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getApiInfo(){
-        Map<String, Object> apiInfo = Map.of(
-                "version","1.0.0",
-                "api_name", "Smart Campus Sensor and Room Management API",
-                "admin_contact", "smartcampus@university.edu",
-                "collections",Map.of(
-                     "rooms", "/api/v1/rooms",
-                        "sensors", "/api/v1/sensors"
-                )
-        );
+    public Response getApiInfo() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("version", "1.0.0");
+        response.put("api_name", "Smart Campus API");
+        response.put("admin_contact", "smartcampus@university.edu");
         
-        return Response.ok(apiInfo).build();
+        Map<String, String> endpoints = new HashMap<>();
+        endpoints.put("rooms", "/api/v1/rooms");
+        endpoints.put("sensors", "/api/v1/sensors");
+        response.put("collections", endpoints);
+        
+        return Response.ok(response).build();
     }
-    
 }

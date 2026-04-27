@@ -4,36 +4,34 @@
  */
 package com.smartcampus;
 
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
+import com.smartcampus.resources.DiscoveryResource;
+import java.net.URI;
 import java.util.logging.Logger;
 
 /**
- * Main class - For documentation only.
- * With TomEE, this class is NOT used to start the server.
- * The application runs automatically when deployed to TomEE.
  * 
  * @author oshic
  */
 public class Main {
     
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    public static final String BASE_URI = "http://localhost:8080/";
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // Manually registering the resource
+        final ResourceConfig config = new ResourceConfig();
+        config.register(DiscoveryResource.class);  
+        
+        final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), config);
+        
         LOGGER.info("==================================================");
-        LOGGER.info("Smart Campus API - Deployment Instructions");
+        LOGGER.info("GRIZZLY - Smart Campus API is running!");
+        LOGGER.info("Test: http://localhost:8080/api/v1/");
         LOGGER.info("==================================================");
-        LOGGER.info("");
-        LOGGER.info("This application is designed to run on TomEE server.");
-        LOGGER.info("");
-        LOGGER.info("To run this application:");
-        LOGGER.info("1. Make sure TomEE is installed and configured in NetBeans");
-        LOGGER.info("2. Right-click on the SmartCampusAPI project");
-        LOGGER.info("3. Select 'Run'");
-        LOGGER.info("4. NetBeans will deploy to TomEE automatically");
-        LOGGER.info("");
-        LOGGER.info("Once deployed, access the API at:");
-        LOGGER.info("http://localhost:8080/SmartCampusAPI/api/v1/");
-        LOGGER.info("");
-        LOGGER.info("To stop: Right-click project → Undeploy or Stop Server");
-        LOGGER.info("==================================================");
+        
+        Thread.currentThread().join();
     }
 }
